@@ -14,45 +14,82 @@
             color: #fff;
             overflow: hidden;
         }
+        .hidden {
+            display: none;
+        }
+        .button-container {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #000;
+        }
+        .button-container button {
+            font-size: 24px;
+            padding: 20px 40px;
+            background-color: #ff4500;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .button-container button:hover {
+            background-color: #ff6347;
+        }
+        .content-container {
+            display: none;
+            text-align: center;
+        }
         h1 {
             font-size: 24px;
             margin-top: 20px;
         }
-        .gif-container {
-            margin: 0 auto;
-            max-width: 100%;
-            max-height: 100%;
-            overflow: hidden;
-        }
         .gif-container img {
             width: 100%;
             height: auto;
-            border-radius: 10px;
-        }
-        audio {
-            display: none;
+            max-width: 400px;
+            margin: 10px 0;
         }
         .text {
             font-size: 20px;
             margin: 20px;
         }
-        .dog-container {
-            margin: 20px 0;
-        }
     </style>
 </head>
 <body>
-    <div class="gif-container">
-        <img src="giphy.webp" alt="Праздничные котики">
+    <!-- Кнопка для запуска -->
+    <div class="button-container">
+        <button onclick="startExperience()">Нажми!</button>
     </div>
-    <h1>Вика!</h1>
-    <p class="text">Ты хорошо себя вела в этом году, хо-хо-хо, поэтому дарю тебе <b>Телеграмес-Премиумес</b> на 1 годес!</p>
-    <div class="dog-container">
-        <img src="200.webp" alt="Праздничная собака">
+
+    <!-- Контент, который появится после нажатия -->
+    <div class="content-container">
+        <audio id="audio" loop>
+            <source src="your-audio-file.mp3" type="audio/mpeg">
+            Ваш браузер не поддерживает аудио.
+        </audio>
+        <div class="gif-container">
+            <img src="giphy.webp" alt="Праздничные котики">
+        </div>
+        <h1>Вика!</h1>
+        <p class="text">Ты хорошо себя вела в этом году, хо-хо-хо, поэтому дарю тебе <b>Телеграмес-Премиумес</b> на 1 годес!</p>
+        <div class="gif-container">
+            <img src="200.webp" alt="Праздничная собака">
+        </div>
     </div>
-    <audio autoplay loop>
-        <source src="your-audio-file.mp3" type="audio/mpeg">
-        Ваш браузер не поддерживает аудио.
-    </audio>
+
+    <script>
+        function startExperience() {
+            // Запускаем аудио
+            const audio = document.getElementById('audio');
+            audio.play();
+
+            // Скрываем кнопку
+            document.querySelector('.button-container').style.display = 'none';
+
+            // Показываем контент
+            document.querySelector('.content-container').style.display = 'block';
+        }
+    </script>
 </body>
 </html>
